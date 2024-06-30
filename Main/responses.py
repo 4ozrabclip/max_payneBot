@@ -1,10 +1,14 @@
 from random import choice
 import re
 
-from typing import Optional
+from typing import Optional, Final
+
+import os
+from dotenv import load_dotenv
 
 from phishkiler import pkentry
-
+load_dotenv()
+ADMIN_USER: Final[str] = os.getenv('ADMIN_ACC')
 
 
 def get_response(user_input: str, username: str) -> str:
@@ -18,7 +22,7 @@ def get_response(user_input: str, username: str) -> str:
 
 
     usrmsg: str = user_input.lower()
-    if username == '4ozmaxpayne':
+    if username == ADMIN_USER:
         return admin_responses(usrmsg)
     else:
         if usrmsg == '':
